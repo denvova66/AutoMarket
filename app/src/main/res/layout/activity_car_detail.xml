@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/carImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:background="#E0E0E0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/brandModelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BMW X5"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/priceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3 500 000 руб."
+                android:textSize="20sp"
+                android:textColor="#007AFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/yearText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Год: 2020"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/mileageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Пробег: 45 000 км"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/engineText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Объем: 3.0 л"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Описание:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Отличное состояние, один владелец, полная сервисная история."
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="24dp" />
+
+            <Button
+                android:id="@+id/contactButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Связаться с продавцом"
+                android:backgroundTint="#007AFF"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/favoriteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Добавить в избранное"
+                android:backgroundTint="#666666"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

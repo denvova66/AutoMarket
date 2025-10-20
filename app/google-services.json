@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "168651113637",
+    "project_id": "market-b845e",
+    "storage_bucket": "market-b845e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168651113637:android:cce79a792874d3f9bcb94c",
+        "android_client_info": {
+          "package_name": "com.example.market"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvFIQudnIBhnk25RPGrIzJzEKR06dEptY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
