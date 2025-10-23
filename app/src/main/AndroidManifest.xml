@@ -15,9 +15,9 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- Главный экран - запускается первым -->
+        <!-- Экран входа - запускается первым -->
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,10 @@
             </intent-filter>
         </activity>
 
-        <!-- Экран входа -->
+        <!-- Главный экран -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:name=".MainActivity"
+            android:exported="false" />
 
         <!-- Экран регистрации -->
         <activity
@@ -50,6 +49,12 @@
         <!-- Добавление автомобиля -->
         <activity
             android:name=".AddCarActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Редактирование автомобиля -->
+        <activity
+            android:name=".EditCarActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 

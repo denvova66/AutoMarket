@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@android:drawable/ic_menu_view"
         android:title="Главная" />
     <item
         android:id="@+id/nav_favorites"
-        android:icon="@drawable/ic_favorite"
+        android:icon="@android:drawable/btn_star"
         android:title="Избранное" />
     <item
+        android:id="@+id/nav_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Добавить" />
+    <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/ic_person"
+        android:icon="@android:drawable/ic_menu_my_calendar"
         android:title="Профиль" />
 </menu>

@@ -8,33 +8,30 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.List;
 
-public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
+public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.FavoriteViewHolder> {
     private List<Car> carList;
     private Context context;
 
-    public CarAdapter(List<Car> carList, Context context) {
+    public FavoritesAdapter(List<Car> carList, Context context) {
         this.carList = carList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CarViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoriteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_car, parent, false);
-        return new CarViewHolder(view);
+        return new FavoriteViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CarViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FavoriteViewHolder holder, int position) {
         Car car = carList.get(position);
         holder.bind(car);
     }
@@ -44,12 +41,12 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         return carList.size();
     }
 
-    class CarViewHolder extends RecyclerView.ViewHolder {
+    class FavoriteViewHolder extends RecyclerView.ViewHolder {
         private ImageView carImage;
         private TextView brandModelText, yearText, mileageText, priceText;
         private ImageButton favoriteButton;
 
-        public CarViewHolder(@NonNull View itemView) {
+        public FavoriteViewHolder(@NonNull View itemView) {
             super(itemView);
             carImage = itemView.findViewById(R.id.carImage);
             brandModelText = itemView.findViewById(R.id.brandModelText);
@@ -57,17 +54,6 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             mileageText = itemView.findViewById(R.id.mileageText);
             priceText = itemView.findViewById(R.id.priceText);
             favoriteButton = itemView.findViewById(R.id.favoriteButton);
-
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    Car car = carList.get(position);
-                    Intent intent = new Intent(context, CarDetailActivity.class);
-                    // Передаем весь объект Car через Intent
-                    intent.putExtra("car", car);
-                    context.startActivity(intent);
-                }
-            });
         }
 
         public void bind(Car car) {
@@ -76,29 +62,33 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             mileageText.setText(car.getMileage() + " км");
             priceText.setText(String.format("%.0f руб.", car.getPrice()));
 
-            // Загружаем изображение если есть URL
             if (car.getImageUrl() != null && !car.getImageUrl().isEmpty()) {
                 Glide.with(context)
                         .load(car.getImageUrl())
                         .placeholder(R.drawable.ic_car_placeholder)
                         .into(carImage);
-            } else {
-                // Если нет изображения, показываем placeholder
-                carImage.setImageResource(R.drawable.ic_car_placeholder);
             }
 
-            favoriteButton.setImageResource(car.isFavorite() ?
-                    R.drawable.ic_favorite_filled : R.drawable.ic_favorite);
-
+            favoriteButton.setImageResource(R.drawable.ic_favorite_filled);
             favoriteButton.setOnClickListener(v -> {
-                if (car.isFavorite()) {
-                    Favorites.removeFavoriteCar(car);
-                    car.setFavorite(false);
-                    favoriteButton.setImageResource(R.drawable.ic_favorite);
-                } else {
-                    Favorites.addFavoriteCar(car);
-                    car.setFavorite(true);
-                    favoriteButton.setImageResource(R.drawable.ic_favorite_filled);
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    Car carToRemove = carList.get(position);
+                    Favorites.removeFavoriteCar(carToRemove);
+                    carToRemove.setFavorite(false);
+                    carList.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, carList.size());
+                }
+            });
+
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    Car clickedCar = carList.get(position);
+                    Intent intent = new Intent(context, CarDetailActivity.class);
+                    intent.putExtra("car_id", clickedCar.getId());
+                    context.startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             });
         }

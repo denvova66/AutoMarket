@@ -50,10 +50,10 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="match_parent"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Зарегистрироваться"
         android:backgroundTint="#007AFF"
+        android:text="Зарегистрироваться"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>

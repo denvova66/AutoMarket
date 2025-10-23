@@ -8,10 +8,9 @@
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="#ffffff">
 
         <ImageView
@@ -21,11 +20,23 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_car_placeholder" />
 
+        <ImageButton
+            android:id="@+id/favoriteButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_favorite"
+            android:padding="12dp"
+            android:contentDescription="Add to favorites" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp">
+            android:padding="12dp"
+            android:layout_below="@id/carImage">
 
             <TextView
                 android:id="@+id/brandModelText"
@@ -57,13 +68,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3 500 000 руб."
-                android:textColor="#007AFF"
+                android:textColor="#8BC34A"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginTop="4dp" />
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

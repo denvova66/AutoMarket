@@ -1,8 +1,9 @@
 package com.example.market;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Car {
+public class Car implements Serializable {
     private String id;
     private String brand;
     private String model;
@@ -14,6 +15,7 @@ public class Car {
     private String ownerId;
     private String imageUrl;
     private Date createdAt;
+    private boolean isFavorite;
 
     public Car() {}
 
@@ -66,4 +68,20 @@ public class Car {
 
     public Date getCreatedAt() { return createdAt; }
     public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
+
+    public boolean isFavorite() { return isFavorite; }
+    public void setFavorite(boolean favorite) { isFavorite = favorite; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return id != null ? id.equals(car.id) : car.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
